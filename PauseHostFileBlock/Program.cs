@@ -1,15 +1,13 @@
-﻿//Goal: Temporarily renames hostfile if run as admin. Is reset on app closure  or end of specified time.
-
-string hostFileLocation = Environment.SystemDirectory + @"\drivers\etc\hosts";
-string disabledFileLocation = Environment.SystemDirectory + @"\drivers\etc\hosts_Disabled";
+﻿using PauseHostFileBlock;
+//Goal: Temporarily renames hostfile if run as admin. Is reset on app closure  or end of specified time.
 
 try
 {
-    System.IO.FileInfo hostFile = new System.IO.FileInfo(hostFileLocation);
-    if (hostFile.Exists)
-    {
-        hostFile.MoveTo(disabledFileLocation);
-    }
+
+    var hostFileRenamer = new HostFileRenamer();
+    Console.ReadLine();
+
+
 }
 catch (UnauthorizedAccessException)
 {
